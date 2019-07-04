@@ -12,7 +12,7 @@ class TestPosts(TestCase):
 
     def test_get_posts(self):
         """
-        Unauthenticated users should not be able to access posts via APIListView
+        Unauthenticated users should not be able to access posts via APIListView # noqa
         """
         url = reverse('posts')
         resp = self.client.get(url)
@@ -27,7 +27,7 @@ class TestPosts(TestCase):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
         jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-        user = User.objects.create_user(username='user', email='user@foo.com', password='pass')
+        user = User.objects.create_user(username='user', email='user@foo.com', password='pass') # noqa
         user.is_active = True
         user.save()
         payload = jwt_payload_handler(user)
