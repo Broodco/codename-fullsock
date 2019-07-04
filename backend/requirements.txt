@@ -3,3 +3,6 @@ Psycopg2==2.8.3
 flake8
 pytest
 pytest-cov
+djangorestframework
+django-filter
+djangorestframework-jwt
