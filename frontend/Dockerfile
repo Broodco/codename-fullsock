@@ -1,9 +1,9 @@
 FROM node:10.15.3
 
 # set working directory
-WORKDIR /app/frontend
+WORKDIR /app/
 
-COPY package.json ./
+COPY frontend/package.json /app
 
 RUN npm install
 RUN npm install -g @vue/cli

@@ -2,17 +2,48 @@ version: '3'
 
 services:
 
+  nginx:
+    container_name: nginx_prod
+    build:
+      context: .
+      dockerfile : nginx/prod/Dockerfile
+    ports:
+      - "90:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./nginx/prod/prod.conf:/etc/nginx/nginx.conf:ro
+      - django-static:/usr/src/app/static
+    networks:
+      - main
+
   db:
-    container_name: db
+    container_name: db_prod
     image: postgres
+    networks:
+      - main
+    volumes:
+      - pg-data:/var/lib/postgresql/data
 
   backend:
     container_name: backend
     build: ./backend
-    command: /start.sh
+    command: /start_prod.sh
     volumes:
-      - .:/code
+      - ./backend:/code
+      - django-static:/code/static
     ports:
       - "8000:8000"
+    networks:
+      - main
     depends_on:
       - db
+
+
+volumes:
+  django-static:
+  pg-data:
+
+networks:
+  main:
+    driver: bridge
