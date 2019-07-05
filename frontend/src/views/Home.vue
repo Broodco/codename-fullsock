@@ -25,9 +25,10 @@
         },
         methods: {
             fetchPosts() {
+                console.log("fetching")
                 axios
                     .get('/api/posts')
-                    .then(response => this.posts = response)
+                    .then(response => this.posts = response.data)
                     .catch(error => console.log(error));
             }
         },
