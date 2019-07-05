@@ -6,3 +6,4 @@ pytest-cov
 djangorestframework
 django-filter
 djangorestframework-jwt
+gunicorn
