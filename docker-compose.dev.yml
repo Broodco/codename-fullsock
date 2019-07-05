@@ -27,7 +27,7 @@ services:
       context: ./frontend
     volumes:
       - ./frontend:/app/frontend:ro
-      - '/app/node_modules'
+      - '/app/frontend/node_modules'
     ports:
       - "8080:8080"
     networks:

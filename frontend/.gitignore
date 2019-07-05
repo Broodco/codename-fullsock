@@ -1,6 +1,5 @@
 .DS_Store
-node_modules/*
-!node_modules/.gitkeep
+node_modules
 /dist
 
 /tests/e2e/reports/

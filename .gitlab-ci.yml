@@ -29,5 +29,4 @@ test:
     DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
     DJANGO_SETTINGS_MODULE: "backend.settings-gitlab-ci"
   script:
-    - flake8
     - pytest --cov
