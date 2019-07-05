@@ -1,19 +1,35 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Coucou Bertrand ! Ca fonctionne avec compose !
-    "/>
-  </div>
+    <div class="home">
+        <h1>Home</h1>
+        <h3>Posts</h3>
+        <div v-for="(post, index) in posts" :key="index">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.content }}</p>
+        </div>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+    import axios from 'axios';
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld,
-  },
-};
+    export default {
+        name: 'home',
+        data () {
+            return {
+                posts: []
+            };
+        },
+        mounted() {
+            console.log('mounted')
+            this.fetchPosts();
+        },
+        methods: {
+            fetchPosts() {
+                axios
+                    .get('localhost:8000/api/posts/')
+                    .then(response => this.posts = response)
+                    .catch(error => console.log(error));
+            }
+        },
+    };
 </script>
