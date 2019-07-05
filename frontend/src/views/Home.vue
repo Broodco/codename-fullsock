@@ -25,9 +25,10 @@
         },
         methods: {
             fetchPosts() {
+                console.log("fetching")
                 axios
-                    .get('localhost:8000/api/posts/')
-                    .then(response => this.posts = response)
+                    .get('/api/posts')
+                    .then(response => this.posts = response.data)
                     .catch(error => console.log(error));
             }
         },

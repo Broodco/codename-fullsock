@@ -2,6 +2,19 @@ version: '3'
 
 services:
 
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./nginx/dev/dev.conf:/etc/nginx/nginx.conf:ro
+      - django-static:/usr/src/app/static
+    networks:
+      - main
+
   db:
     container_name: db
     image: postgres
@@ -14,6 +27,7 @@ services:
     command: /start.sh
     volumes:
       - .:/code
+      - django-static:/backend/static
     ports:
       - "8000:8000"
     networks: 
@@ -41,3 +55,6 @@ services:
 networks: 
   main:
     driver: bridge
+
+volumes:
+  django-static:
