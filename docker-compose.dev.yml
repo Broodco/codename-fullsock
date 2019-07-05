@@ -3,8 +3,10 @@ version: '3'
 services:
 
   nginx:
-    container_name: nginx
-    image: nginx:alpine
+    container_name: nginx_dev
+    build:
+      context: .
+      dockerfile: nginx/dev/Dockerfile
     ports:
       - "80:80"
     depends_on:
@@ -16,15 +18,15 @@ services:
       - main
 
   db:
-    container_name: db
+    container_name: db_dev
     image: postgres
     networks: 
       - main
 
   backend:
-    container_name: backend
+    container_name: backend_dev
     build: ./backend
-    command: /start.sh
+    command: /start_dev.sh
     volumes:
       - .:/code
       - django-static:/backend/static
@@ -36,7 +38,7 @@ services:
       - db
 
   frontend:
-    container_name: frontend
+    container_name: frontend_dev
     build:
       context: ./frontend
     volumes:

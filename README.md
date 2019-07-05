@@ -1,9 +1,10 @@
 # Full Sock
 
-A full stack application. 
+A full stack application running in Docker containers. With development & production environments.
 
 ## Built with
 
-- Docker
-- Django
-- Vue.js
+- Docker & docker-compose
+- Django & Django Rest Framework
+- nginx
+- Postgresql
