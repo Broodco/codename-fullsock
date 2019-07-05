@@ -2,6 +2,17 @@ version: '3'
 
 services:
 
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - main
+
   db:
     container_name: db
     image: postgres

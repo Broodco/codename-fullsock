@@ -26,7 +26,7 @@
         methods: {
             fetchPosts() {
                 axios
-                    .get('localhost:8000/api/posts/')
+                    .get('/api/posts')
                     .then(response => this.posts = response)
                     .catch(error => console.log(error));
             }
