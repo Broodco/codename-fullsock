@@ -11,9 +11,10 @@ services:
       - "80:80"
     depends_on:
       - backend
+      - frontend
     volumes:
       - ./nginx/dev/dev.conf:/etc/nginx/nginx.conf:ro
-      - django-static:/usr/src/app/static
+      - django-static-dev:/usr/src/app/static
     networks:
       - main
 
@@ -29,7 +30,7 @@ services:
     command: /start_dev.sh
     volumes:
       - .:/code
-      - django-static:/backend/static
+      - django-static-dev:/backend/static
     ports:
       - "8000:8000"
     networks: 
@@ -54,9 +55,42 @@ services:
     environment:
       - NODE_ENV=development
 
+  redis:
+    image: redis:alpine
+    container_name: redis
+    networks:
+      - main
+  
+  celery:
+    build: ./backend
+    container_name: celery
+    command: bash -c 'python3 manage.py watch_celery'
+    volumes:
+      - ./backend:/code
+    depends_on:
+      - db
+      - redis
+    networks:
+      - main
+  
+  flower:
+    image: mher/flower
+    container_name: flower_dev
+    command: flower --url_prefix=flower
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379
+      - FLOWER_PORT=5555
+    ports:
+      - 5555:5555
+    networks:
+      - main
+    depends_on:
+      - celery
+      - redis
+
 networks: 
   main:
     driver: bridge
 
 volumes:
-  django-static:
+  django-static-dev:

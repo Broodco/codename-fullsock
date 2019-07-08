@@ -7,3 +7,5 @@ djangorestframework
 django-filter
 djangorestframework-jwt
 gunicorn
+celery==4.3
+redis==3.2
