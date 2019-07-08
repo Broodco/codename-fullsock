@@ -14,7 +14,7 @@ services:
       - frontend
     volumes:
       - ./nginx/dev/dev.conf:/etc/nginx/nginx.conf:ro
-      - django-static-dev:/usr/src/app/static
+      - django-static:/usr/src/app/static
     networks:
       - main
 
@@ -30,7 +30,7 @@ services:
     command: /start_dev.sh
     volumes:
       - .:/code
-      - django-static-dev:/backend/static
+      - django-static:/backend/static
     ports:
       - "8000:8000"
     networks: 
@@ -43,8 +43,8 @@ services:
     build:
       context: ./frontend
     volumes:
-      - ./frontend:/app/frontend:ro
-      - '/app/frontend/node_modules'
+      - ./frontend:/app/:ro
+      - '/app/node_modules'
     ports:
       - "8080:8080"
     networks:
@@ -93,4 +93,4 @@ networks:
     driver: bridge
 
 volumes:
-  django-static-dev:
+  django-static:
