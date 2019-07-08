@@ -10,27 +10,27 @@
 </template>
 
 <script>
-    import axios from 'axios';
+import axios from 'axios';
 
-    export default {
-        name: 'home',
-        data () {
-            return {
-                posts: []
-            };
+export default {
+    name: 'home',
+    data() {
+        return {
+            posts: [],
+        };
+    },
+    mounted() {
+        console.log('mounted');
+        this.fetchPosts();
+    },
+    methods: {
+        fetchPosts() {
+            console.log('fetching');
+            axios
+                .get('/api/posts')
+                .then(response => this.posts = response.data)
+                .catch(error => console.log(error));
         },
-        mounted() {
-            console.log('mounted')
-            this.fetchPosts();
-        },
-        methods: {
-            fetchPosts() {
-                console.log("fetching")
-                axios
-                    .get('/api/posts')
-                    .then(response => this.posts = response.data)
-                    .catch(error => console.log(error));
-            }
-        },
-    };
+    },
+};
 </script>
