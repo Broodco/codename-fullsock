@@ -23,6 +23,8 @@ services:
     image: postgres
     networks: 
       - main
+    volumes:
+      - pg-data-dev:/var/lib/postgresql/data
 
   backend:
     container_name: backend_dev
@@ -87,6 +89,15 @@ services:
     depends_on:
       - celery
       - redis
+  
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    ports:
+      - 9000:9000
 
 networks: 
   main:
@@ -94,3 +105,5 @@ networks:
 
 volumes:
   django-static:
+  portainer-data:
+  pg-data-dev:

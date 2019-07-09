@@ -72,10 +72,20 @@ services:
       - celery
       - redis
 
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    ports:
+      - 9000:9000
+
 
 volumes:
   django-static:
   pg-data:
+  portainer-data:
 
 networks:
   main:
