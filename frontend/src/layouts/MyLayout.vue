@@ -1,110 +1,81 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-        >
-          <q-icon name="menu" />
-        </q-btn>
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
+<q-layout view="hHh LpR fFf">
+    <q-header reveal class="bg-primary text-white">
+        <q-toolbar>
+            <q-btn dense flat round icon="menu" @click="left = !left" class="lt-md"/>
+            <q-toolbar-title>
+                Broodco's Website
+            </q-toolbar-title>
+            <q-space/>
+            <q-tabs v-model="tab" class="gt-xs">
+                <q-tab name="home" label="Home"/>
+                <q-tab name="resume" label="Resume"/>
+                <q-tab name="portfolio" label="Portfolio"/>
+                <q-tab name="contact" label="Contact"/>
+            </q-tabs>
+        </q-toolbar>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      bordered
-      content-class="bg-grey-2"
+        v-model="left"
+        side="left"
+        overlay
+        behavior="desktop"
+        bordered
+        class="lt-md"
     >
-      <q-list>
-        <q-item-label header>Essential Links</q-item-label>
-        <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Docs</q-item-label>
-            <q-item-label caption>quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://github.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="code" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Github</q-item-label>
-            <q-item-label caption>github.com/quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://chat.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="chat" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Discord Chat Channel</q-item-label>
-            <q-item-label caption>chat.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://forum.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="record_voice_over" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Forum</q-item-label>
-            <q-item-label caption>forum.quasar.dev</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://twitter.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="rss_feed" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Twitter</q-item-label>
-            <q-item-label caption>@quasarframework</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://facebook.quasar.dev">
-          <q-item-section avatar>
-            <q-icon name="public" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Facebook</q-item-label>
-            <q-item-label caption>@QuasarFramework</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+        <q-scroll-area class="fit">
+            <q-list v-for="(menuItem, index) in menuList" :key="index">
+                <q-item clickable :active="menuItem.label === 'Outbox'">
+                    <q-item-section avatar>
+                        <q-icon :name="menuItem.icon"/>
+                    </q-item-section>
+                    <q-item-section>
+                        {{ menuItem.label }}
+                    </q-item-section>
+                </q-item>
+                <q-separator v-if="menuItem.separator" />
+            </q-list>
+        </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+        <router-view />
     </q-page-container>
-  </q-layout>
+</q-layout>
 </template>
 
 <script>
-import { openURL } from 'quasar'
-
 export default {
-  name: 'MyLayout',
-  data () {
-    return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+    data () {
+        return {
+            left: true,
+            tab: '',
+            menuList
+        }
     }
-  },
-  methods: {
-    openURL
-  }
 }
-</script>
 
-<style>
-</style>
+const menuList = [
+    {
+        icon: 'home',
+        label: 'Home',
+        separator: true
+    },
+    {
+        icon: 'person',
+        label: 'Resume',
+        separator: false
+    },
+    {
+        icon: 'important_devices',
+        label: 'Portfolio',
+        separator: false
+    },
+    {
+        icon: 'contact_mail',
+        label: 'Contact',
+        separator: false
+    }
+]
+</script>

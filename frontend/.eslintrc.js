@@ -37,6 +37,7 @@ module.exports = {
     'arrow-parens': 'off',
     'one-var': 'off',
 
+
     'import/first': 'off',
     'import/named': 'error',
     'import/namespace': 'error',
@@ -50,6 +51,9 @@ module.exports = {
     // allow console.log during development only
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // allow debugger during development only
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
+    // Code style
+    'indent' : ["error",4]
   }
 }
