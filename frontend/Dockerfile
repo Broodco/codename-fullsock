@@ -1,15 +1,14 @@
 FROM node:10.15.3
 
-# set working directory
-WORKDIR /app/
+WORKDIR /app
 
-COPY package.json ./
+RUN npm install -g @vue/cli && \
+    npm install -g @vue/cli-init && \
+    npm install -g @quasar/cli && \
+    npm install -g yarn
 
-RUN npm install
-RUN npm install -g @vue/cli
+COPY package*.json ./
 
 COPY . .
 
 EXPOSE 8080
-
-CMD ["npm", "run", "serve"]

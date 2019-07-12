@@ -2,8 +2,10 @@
 FROM node:10.15.3 as build-stage
 WORKDIR /app/
 COPY frontend/package.json /app/
-RUN npm install
-RUN npm install -g @vue/cli
+RUN npm install -g @vue/cli && \
+    npm install -g @vue/cli-init && \
+    npm install -g @quasar/cli && \
+    npm install -g yarn
 
 COPY frontend /app/
 RUN npm run build
