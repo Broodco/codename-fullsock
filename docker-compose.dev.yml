@@ -45,7 +45,7 @@ services:
     build:
       context: ./frontend
     volumes:
-      - ./frontend:/app/:ro
+      - ./frontend:/app/
       - '/app/node_modules'
     ports:
       - "8080:8080"
@@ -56,6 +56,7 @@ services:
       - db
     environment:
       - NODE_ENV=development
+    command: quasar dev
 
   redis:
     image: redis:alpine
