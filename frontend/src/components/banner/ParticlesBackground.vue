@@ -1,5 +1,16 @@
 <template>
-    <div id="particles"></div>
+    <div id="particles">
+        <div class="absolute-center text-white text-center transparent q-pb-lg">
+            <h2 class="font-squada q-my-sm" id="#content">
+                Maxime Broodcoorens
+            </h2>
+            <div class="text-h4 q-pb-sm">
+                Junior Full-Stack Developer
+            </div>
+            <q-separator color="white"/>
+            <div>There will be a list of icons</div>
+        </div>
+    </div>
 </template>
 
 <script>
