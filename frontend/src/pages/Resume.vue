@@ -1,9 +1,10 @@
 <template>
-    <div>
-        <h4>
-            My Resume
-        </h4>
-    </div>
+    <q-page class="flex flex-center text-center">
+        <h3>
+            Here will be my resume
+        </h3>
+    </q-page>
+
 </template>
 
 <script>

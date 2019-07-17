@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h4>
-            My Portfolio
-        </h4>
-    </div>
+    <q-page class="flex flex-center text-center">
+        <h3>
+            This will be my portfolio
+        </h3>
+    </q-page>
 </template>
 
 <script>

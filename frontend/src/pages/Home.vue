@@ -1,8 +1,15 @@
 <template>
-    <q-page class="flex flex-center text-center">
-        <h3>
-            Hello, this is a <i>work in progress</i>, come back later!
-        </h3>
+    <q-page class="q-pa-sm">
+        <div class="row justify-center">
+            <div>
+                <h3 class="text-center q-ma-md">
+                    Maxime Broodcoorens
+                </h3>
+                <h5 class="text-center text-h5 q-ma-sm">
+                    Junior Fullstack Developer
+                </h5>
+            </div>
+        </div>
     </q-page>
 </template>
 
@@ -10,7 +17,11 @@
 </style>
 
 <script>
+import Banner from '../components/Banner'
 export default {
-    name: 'PageIndex'
+    name: 'PageIndex',
+    components: {
+        Banner
+    }
 }
 </script>

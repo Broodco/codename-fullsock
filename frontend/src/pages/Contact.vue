@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h4>
+    <q-page class="flex flex-center text-center">
+        <h3>
             Contact Me !
-        </h4>
-    </div>
+        </h3>
+    </q-page>
 </template>
 
 <script>

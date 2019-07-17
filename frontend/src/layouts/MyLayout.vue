@@ -1,18 +1,12 @@
 <template>
 <q-layout view="hHh lpr fFf">
-    <q-header reveal class="bg-primary text-white gt-xs">
+    <q-header reveal class="bg-primary text-white">
         <q-toolbar>
-            <q-toolbar-title>
+            <q-toolbar-title class="font-squada">
                 Broodco's Website
             </q-toolbar-title>
             <q-space/>
         </q-toolbar>
-        <q-tabs v-model="tab" class="gt-xs">
-            <q-route-tab to="/" name="home" label="Home"/>
-            <q-route-tab to="/resume" name="resume" label="Resume"/>
-            <q-route-tab to="/portfolio" name="portfolio" label="Portfolio"/>
-            <q-route-tab to="/contact" name="contact" label="Contact"/>
-        </q-tabs>
     </q-header>
 
     <q-page-container>
@@ -20,7 +14,7 @@
     </q-page-container>
 
     <q-footer bordered class="bg-primary text-white">
-        <q-tabs v-model="tab" class="lt-sm">
+        <q-tabs v-model="tab" align="justify">
             <q-route-tab to="/" name="home" label="Home"/>
             <q-route-tab to="/resume" name="resume" label="Resume"/>
             <q-route-tab to="/portfolio" name="portfolio" label="Portfolio"/>
