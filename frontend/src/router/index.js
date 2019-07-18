@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import routes from './routes'
-
 Vue.use(VueRouter)
 
 /*
@@ -18,7 +16,7 @@ export default function (/* { store, ssrContext } */) {
         // Leave these as is and change from quasar.conf.js instead!
         // quasar.conf.js -> build -> vueRouterMode
         // quasar.conf.js -> build -> publicPath
-        mode: process.env.VUE_ROUTER_MODE,
+        mode: 'history',
         base: process.env.VUE_ROUTER_BASE
     })
 
