@@ -1,6 +1,6 @@
 <template>
     <div id="particles">
-        <div class="absolute-center text-white text-center transparent q-pb-lg">
+        <div class="absolute-center text-white text-center transparent q-pb-xl" id="content">
             <h2 class="font-squada q-my-sm" id="#content">
                 Maxime Broodcoorens
             </h2>
@@ -8,7 +8,10 @@
                 Junior Full-Stack Developer
             </div>
             <q-separator color="white"/>
-            <div>There will be a list of icons</div>
+            <div flex flex-center class="q-mt-sm">
+                <q-icon name="fab fa-github" style="font-size: 32px" class="q-mx-md"/>
+                <q-icon name="fab fa-linkedin" style="font-size: 32px" class="q-mx-md"/>
+            </div>
         </div>
     </div>
 </template>
@@ -94,7 +97,7 @@ export default {
                 },
                 "retina_detect": true
             })
-        }
+        },
     }
 }
 </script>
@@ -105,5 +108,8 @@ export default {
         width: 100%;
         height: 100%;
         background: '#1f2933';
+    }
+    #content{
+        top:40vh;
     }
 </style>
