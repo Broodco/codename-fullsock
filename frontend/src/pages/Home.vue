@@ -1,8 +1,9 @@
 <template>
     <q-page>
         <Banner id="home" />
-        <Navbar id="navbar" :class="{sticky: isSticky}" :tab="currentTab"/>
+        <Navbar id="navbar" :class="{sticky: isSticky}" :currentTab.sync="currentTab"/>
         <About id="about" :class="{padded: isSticky}" />
+        <Portfolio id="portfolio"/>
         <q-scroll-observer @scroll="scrollHandler"/>
     </q-page>
 </template>
@@ -12,13 +13,19 @@
         position: fixed;
         top: 0;
         width: 100%;
+        animation-duration: 0.5s;
+        animation-name: slidein;
     }
     .padded{
-        padding-top: 55px;
+        padding-top: 50px;
     }
-    @keyframes slide-down {
-        0% {
-
+    @keyframes slidein {
+        from {
+            position: fixed;
+            top: -50px;
+        }
+        to {
+            top: 0;
         }
     }
 </style>
@@ -27,12 +34,14 @@
 import Banner from '../components/banner/Banner'
 import About from '../components/about/About'
 import Navbar from '../components/navbar/Navbar'
+import Portfolio from '../components/portfolio/Portfolio'
 export default {
     name: 'HomePage',
     components: {
         Banner,
         About,
-        Navbar
+        Navbar,
+        Portfolio
     },
     data(){
         return{
@@ -42,7 +51,6 @@ export default {
     },
     methods: {
         scrollHandler: function(info) {
-            console.log("pos = "+info.position+ " nav = "+this.navPos)
             info.position > this.navPos ? this.isSticky=true : this.isSticky=false
             return info
         }
@@ -51,6 +59,14 @@ export default {
         navPos: function () {
             let nav = document.querySelector('#navbar')
             return nav.offsetTop;
+        },
+        aboutPos: function () {
+            let about = document.querySelector('#about')
+            return about.offsetTop;
+        },
+        portfolioPos: function () {
+            let portfolio = document.querySelector('#portfolio')
+            return portfolio.offsetTop;
         },
         scrollTop: function () {
             return window.scrollY
