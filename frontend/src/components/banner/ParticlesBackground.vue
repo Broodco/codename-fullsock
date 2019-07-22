@@ -9,8 +9,12 @@
             </div>
             <q-separator color="white"/>
             <div flex flex-center class="q-mt-sm">
-                <q-icon name="fab fa-github" style="font-size: 32px" class="q-mx-md"/>
-                <q-icon name="fab fa-linkedin" style="font-size: 32px" class="q-mx-md"/>
+                <a href="https://github.com/Broodco" class="text-white q-ma-md">
+                    <q-icon name="fab fa-github" style="font-size: 32px" class="q-mx-md"/>
+                </a>
+                <a href="https://www.linkedin.com/in/broodco/" class="text-white q-ma-md">
+                    <q-icon name="fab fa-linkedin" style="font-size: 32px" class="q-mx-md"/>
+                </a>
             </div>
         </div>
     </div>
