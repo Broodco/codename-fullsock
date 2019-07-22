@@ -1,39 +1,56 @@
 <template>
     <q-page>
-        <Banner id="home" />
-        <Navbar id="navbar" :class="{sticky: isSticky}" :currentTab.sync="currentTab"/>
-        <About id="about" :class="{padded: isSticky}" />
-        <Portfolio id="portfolio"/>
-        <q-scroll-observer @scroll="scrollHandler"/>
+        <Banner ref="banner" id="banner"/>
+        <Navbar
+            id="navbar"
+            ref="nav"
+            v-bind:class="[{stickyTop: isStickyTop},{stickyBottom: isStickyBottom}]"
+            :currentTab.sync="currentTab"/>
+        <NameBar
+            id="namebar"
+            v-if="isStickyBottom"
+            v-bind:class="{stickyTop:isStickyBottom}"
+        />
+        <About id="about" :class="[{paddedTop: isStickyTop},{paddedTop: isStickyBottom}]"/>
+        <Portfolio id="portfolio" class="paddedBottom" />
+        <div v-scroll="scrolled"></div>
     </q-page>
 </template>
 
 <style>
-    .sticky{
+    .stickyTop{
         position: fixed;
         top: 0;
         width: 100%;
-        animation-duration: 0.5s;
-        animation-name: slidein;
+        animation-duration: 1s;
+        animation-name: fadein;
     }
-    .padded{
-        padding-top: 50px;
+    .stickyBottom {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        animation-duration: 1s;
+        animation-name: fadein;
     }
-    @keyframes slidein {
+    @keyframes fadein{
         from {
-            position: fixed;
-            top: -50px;
+            opacity: 0
         }
         to {
-            top: 0;
+            opacity: 100
         }
+    }
+    .paddedTop{
+        padding-top: 64px;
     }
 </style>
 
 <script>
+import { debounce } from 'quasar'
 import Banner from '../components/banner/Banner'
 import About from '../components/about/About'
 import Navbar from '../components/navbar/Navbar'
+import NameBar from '../components/navbar/NameBar'
 import Portfolio from '../components/portfolio/Portfolio'
 export default {
     name: 'HomePage',
@@ -41,36 +58,44 @@ export default {
         Banner,
         About,
         Navbar,
-        Portfolio
+        Portfolio,
+        NameBar
     },
     data(){
         return{
-            isSticky: false,
-            currentTab : 'home'
+            isStickyTop: false,
+            isStickyBottom: false,
+            currentTab : 'home',
         }
     },
     methods: {
-        scrollHandler: function(info) {
-            info.position > this.navPos ? this.isSticky=true : this.isSticky=false
-            return info
-        }
+        scrolled: debounce(
+            function(position) {
+                if (this.$q.platform.is.mobile){
+                    if (position > this.bannerHeight){
+                        this.isStickyBottom = true
+                        this.isStickyTop = false
+                    } else {
+                        this.isStickyBottom = false
+                        this.isStickyTop = false
+                    }
+                } else {
+                    if (position > this.bannerHeight){
+                        this.isStickyTop = true
+                        this.isStickyBottom = false
+                    } else {
+                        this.isStickyTop = false
+                        this.isStickyBottom = false
+                    }
+                }
+
+        },50),
     },
     computed: {
-        navPos: function () {
-            let nav = document.querySelector('#navbar')
-            return nav.offsetTop;
-        },
-        aboutPos: function () {
-            let about = document.querySelector('#about')
-            return about.offsetTop;
-        },
-        portfolioPos: function () {
-            let portfolio = document.querySelector('#portfolio')
-            return portfolio.offsetTop;
-        },
-        scrollTop: function () {
-            return window.scrollY
-        },
-    },
+        bannerHeight() {
+            return window.innerHeight
+        }
+    }
+
 }
 </script>

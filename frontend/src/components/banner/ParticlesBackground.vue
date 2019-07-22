@@ -1,5 +1,5 @@
 <template>
-    <div id="particles">
+    <div id="particles" class="window-height">
         <div class="absolute-center text-white text-center transparent q-pb-xl" id="content">
             <h2 class="font-squada q-my-sm" id="#content">
                 Maxime Broodcoorens

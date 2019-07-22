@@ -8,12 +8,13 @@ RUN npm install -g @vue/cli && \
     npm install -g yarn
 
 COPY frontend /app/
-RUN npm run build
+RUN yarn
+RUN quasar build
 
 # production stage
 FROM nginx:1.13.12-alpine as production-stage
 COPY nginx/prod/prod.conf /etc/nginx/nginx.conf
 COPY backend/static /usr/src/app/static/
-COPY --from=build-stage /app/dist /dist/
+COPY --from=build-stage /app/dist/spa /dist/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
