@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="q-pa-md">
         <h3>Work In Progress</h3>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil minus, voluptas suscipit placeat debitis quibusdam veniam, consequuntur recusandae tempore eligendi quo, distinctio corporis ipsam reprehenderit vitae corrupti quisquam ratione perspiciatis.
         Omnis sequi odit porro voluptates doloremque accusantium, modi nobis quis ipsa amet, voluptate iste dolorum eligendi non eius dignissimos minima! Optio, animi ad? Quos minus suscipit, totam inventore necessitatibus temporibus.

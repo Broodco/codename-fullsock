@@ -1,11 +1,11 @@
 <template>
     <nav>
         <q-toolbar class="bg-primary text-white flex flex-center q-pb-sm" height="60px">
-            <q-toolbar-title class="font-squada">Broodco</q-toolbar-title>
+            <q-toolbar-title class="font-squada gt-sm">Broodco</q-toolbar-title>
                 <q-tabs
                     v-model="activeTab"
                     align="justify"
-                    stretch
+                    dense
                     @click="$emit('update:currentTab', activeTab);"
                 >
                     <q-tab
@@ -32,7 +32,6 @@
         </q-toolbar>
     </nav>
 </template>
-<script src="dist/vue-scrollactive.min.js"></script>
 <script>
 export default {
     name: "Navbar",
@@ -48,8 +47,5 @@ export default {
 </script>
 
 <style scoped>
-.borderBot{
-    border-bottom: 10px;
-    border-bottom-color: black;
-}
+
 </style>
