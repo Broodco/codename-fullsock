@@ -6,6 +6,7 @@
                     v-model="activeTab"
                     align="justify"
                     dense
+                    shrink
                     @click="$emit('update:currentTab', activeTab);"
                 >
                     <q-tab
