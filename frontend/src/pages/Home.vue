@@ -20,13 +20,18 @@
 <style>
     .stickyTop{
         position: fixed;
+        z-index:10;
         top: 0;
+        border-bottom: 1px solid #ff7700;
         width: 100%;
         animation-duration: 1s;
         animation-name: fadein;
     }
     .stickyBottom {
         position: fixed;
+        z-index:10;
+        border-bottom: none;
+        border-top: 1px solid #ff7700;
         bottom: 0;
         width: 100%;
         animation-duration: 1s;
@@ -41,7 +46,7 @@
         }
     }
     .paddedTop{
-        padding-top: 64px;
+        margin-top: 50px;
     }
 </style>
 

@@ -55,7 +55,9 @@ module.exports = function (ctx) {
                 'QScrollObserver',
                 'QCard',
                 'QCardSection',
-                'QCardActions'
+                'QCardActions',
+                'QImg',
+                'QAvatar'
             ],
 
             directives: [

@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <q-toolbar class="bg-primary text-white flex flex-center q-pb-sm" height="60px">
+        <q-toolbar class="bg-primary text-white flex flex-center q-pb-sm borderbot" height="60px">
             <q-toolbar-title class="font-squada gt-sm">Broodco</q-toolbar-title>
                 <q-tabs
                     v-model="activeTab"
@@ -20,14 +20,17 @@
                     <q-tab
                         name="portfolio"
                         label="PORTFOLIO"
+                        class="text-strike"
                     />
                     <q-tab
                         name="resume"
                         label="RESUME"
+                        class="text-strike"
                     />
                     <q-tab
                         name="contact"
                         label="CONTACT"
+                        class="text-strike"
                     />
                 </q-tabs>
         </q-toolbar>
@@ -47,6 +50,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+    .borderbot{
+        border-bottom: 2px solid #ff7700;
+    }
 </style>
